@@ -1,4 +1,4 @@
-// Loading Screen
+
 window.addEventListener('load', () => {
     const loading = document.querySelector('.loading');
     if (loading) {
@@ -11,7 +11,6 @@ window.addEventListener('load', () => {
     }
 });
 
-// Cursor Personalizado
 const cursor = document.querySelector('.custom-cursor');
 
 document.addEventListener('mousemove', (e) => {
@@ -21,7 +20,7 @@ document.addEventListener('mousemove', (e) => {
     }
 });
 
-// Efeito hover no cursor
+
 document.addEventListener('mouseover', (e) => {
     if (cursor && (e.target.tagName === 'A' || e.target.tagName === 'BUTTON' || e.target.closest('.btn') || e.target.closest('.nav-link'))) {
         cursor.classList.add('hover');
@@ -34,7 +33,7 @@ document.addEventListener('mouseout', (e) => {
     }
 });
 
-// Mobile Menu Toggle
+
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 
@@ -43,7 +42,7 @@ hamburger.addEventListener('click', () => {
     navMenu.classList.toggle('active');
 });
 
-// Close mobile menu when clicking on a link
+
 document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', () => {
         hamburger.classList.remove('active');
@@ -51,7 +50,7 @@ document.querySelectorAll('.nav-link').forEach(link => {
     });
 });
 
-// Smooth scrolling for navigation links
+
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -65,7 +64,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Navbar background change on scroll com efeitos aprimorados
+
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
     if (window.scrollY > 100) {
@@ -75,7 +74,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Scroll Reveal Animation aprimorado
+
 const revealElements = document.querySelectorAll('.reveal, .skill-card, .project-card, .certificate-card, .notice-card');
 
 const revealOnScroll = () => {
@@ -91,28 +90,28 @@ const revealOnScroll = () => {
     });
 };
 
-// Add reveal class to elements
+
 document.addEventListener('DOMContentLoaded', () => {
-    // Add reveal class to elements that should animate
+    
     const elementsToReveal = document.querySelectorAll('.skill-card, .project-card, .certificate-card, .notice-card, .glass-card');
     elementsToReveal.forEach(element => {
         element.classList.add('reveal');
     });
     
-    // Inicializar efeitos de partículas
+    
     initParticleEffects();
     
-    // Inicializar efeitos de tilt
+    
     initTiltEffects();
     
-    // Inicializar elementos decorativos de fundo
+    
     initBackgroundElements();
 });
 
 window.addEventListener('scroll', revealOnScroll);
 window.addEventListener('load', revealOnScroll);
 
-// Parallax effect for hero section aprimorado
+
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     const hero = document.querySelector('.hero');
@@ -129,19 +128,19 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Efeitos de Partículas Aprimorados
+
 function initParticleEffects() {
     const particles = document.querySelectorAll('.particle');
     
     particles.forEach((particle, index) => {
-        // Adicionar variação aleatória
+        
         const randomDelay = Math.random() * 6;
         const randomDuration = 4 + Math.random() * 4;
         
         particle.style.animationDelay = `${randomDelay}s`;
         particle.style.animationDuration = `${randomDuration}s`;
         
-        // Efeito de interação com mouse
+        
         particle.addEventListener('mouseenter', () => {
             particle.style.transform = 'scale(2)';
             particle.style.opacity = '1';
@@ -154,12 +153,11 @@ function initParticleEffects() {
     });
 }
 
-// Efeitos para elementos decorativos de fundo
 function initBackgroundElements() {
     const bgElements = document.querySelectorAll('.bg-element');
     const imageDecorations = document.querySelectorAll('.image-decoration');
     
-    // Efeito de interação com elementos de fundo
+    
     bgElements.forEach(element => {
         element.addEventListener('mouseenter', () => {
             element.style.opacity = '0.3';
@@ -172,7 +170,7 @@ function initBackgroundElements() {
         });
     });
     
-    // Efeito de interação com decorações da imagem
+    
     imageDecorations.forEach(decoration => {
         decoration.addEventListener('mouseenter', () => {
             decoration.style.opacity = '1';
@@ -185,7 +183,7 @@ function initBackgroundElements() {
         });
     });
     
-    // Efeito de parallax nos elementos de fundo
+    
     window.addEventListener('mousemove', (e) => {
         const mouseX = e.clientX / window.innerWidth;
         const mouseY = e.clientY / window.innerHeight;
@@ -200,7 +198,7 @@ function initBackgroundElements() {
     });
 }
 
-// Efeitos de Tilt nos Cards
+
 function initTiltEffects() {
     const cards = document.querySelectorAll('.skill-card, .project-card, .certificate-card, .notice-card');
     
@@ -225,7 +223,7 @@ function initTiltEffects() {
     });
 }
 
-// Contact Form Functionality with FormSubmit
+
 const contactForm = document.getElementById('contactForm');
 
 contactForm.addEventListener('submit', async (e) => {
@@ -239,7 +237,7 @@ contactForm.addEventListener('submit', async (e) => {
     submitButton.disabled = true;
     
     try {
-        // Send form data to FormSubmit
+        
         const formData = new FormData(contactForm);
         
         const response = await fetch(contactForm.action, {
@@ -248,11 +246,11 @@ contactForm.addEventListener('submit', async (e) => {
         });
         
         if (response.ok) {
-            // Success message
+            
             showNotification('Mensagem enviada com sucesso! Em breve entrarei em contato.', 'success');
             contactForm.reset();
             
-            // Reset form labels
+            
             const labels = contactForm.querySelectorAll('label');
             labels.forEach(label => {
                 label.style.top = '1rem';
@@ -260,7 +258,7 @@ contactForm.addEventListener('submit', async (e) => {
                 label.style.color = 'var(--text-light)';
             });
             
-            // Trigger confetti effect
+    
             setTimeout(() => {
                 createConfetti();
             }, 500);
@@ -273,13 +271,13 @@ contactForm.addEventListener('submit', async (e) => {
         console.error('Erro no envio:', error);
         showNotification('Erro ao enviar mensagem. Entre em contato diretamente pelo e-mail: zzzgams@gmail.com', 'error');
     } finally {
-        // Reset button
+        
         submitButton.innerHTML = originalText;
         submitButton.disabled = false;
     }
 });
 
-// Notification system aprimorado
+
 function showNotification(message, type = 'info') {
     const notification = document.createElement('div');
     notification.className = `notification notification-${type}`;
@@ -288,7 +286,7 @@ function showNotification(message, type = 'info') {
         <span>${message}</span>
     `;
     
-    // Add styles aprimoradas
+    
     notification.style.cssText = `
         position: fixed;
         top: 100px;
@@ -311,12 +309,12 @@ function showNotification(message, type = 'info') {
     
     document.body.appendChild(notification);
     
-    // Animate in com efeito bounce
+    
     setTimeout(() => {
         notification.style.transform = 'translateX(0) scale(1)';
     }, 100);
     
-    // Remove after 5 seconds
+    
     setTimeout(() => {
         notification.style.transform = 'translateX(400px) scale(0.8)';
         setTimeout(() => {
@@ -325,7 +323,7 @@ function showNotification(message, type = 'info') {
     }, 5000);
 }
 
-// Form field animations aprimoradas
+
 const formGroups = document.querySelectorAll('.form-group');
 
 formGroups.forEach(group => {
@@ -333,7 +331,7 @@ formGroups.forEach(group => {
     const label = group.querySelector('label');
     
     if (input && label) {
-        // Check if input has value on load
+        
         if (input.value) {
             label.style.top = '-0.5rem';
             label.style.fontSize = '0.75rem';
@@ -370,15 +368,15 @@ formGroups.forEach(group => {
     }
 });
 
-// Efeitos de hover aprimorados para cards
+
 const cards = document.querySelectorAll('.skill-card, .project-card, .certificate-card, .notice-card');
 
 cards.forEach(card => {
     card.addEventListener('mouseenter', () => {
-        // Adicionar efeito de brilho
+    
         card.style.boxShadow = '0 20px 50px rgba(255, 143, 163, 0.3)';
         
-        // Efeito de partículas no hover
+        
         createHoverParticles(card);
     });
     
@@ -387,7 +385,6 @@ cards.forEach(card => {
     });
 });
 
-// Criar partículas no hover dos cards
 function createHoverParticles(card) {
     for (let i = 0; i < 5; i++) {
         const particle = document.createElement('div');
@@ -410,7 +407,7 @@ function createHoverParticles(card) {
         
         card.appendChild(particle);
         
-        // Animar partícula
+        
         setTimeout(() => {
             particle.style.transform = `translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px)`;
             particle.style.opacity = '0';
@@ -425,7 +422,7 @@ function createHoverParticles(card) {
     }
 }
 
-// Typing effect for hero title
+
 function typeWriter(element, text, speed = 100) {
     let i = 0;
     element.innerHTML = '';
@@ -441,7 +438,7 @@ function typeWriter(element, text, speed = 100) {
     type();
 }
 
-// Confetti effect aprimorado
+
 function createConfetti() {
     const colors = ['#ff8fa3', '#f4a6cd', '#ffb3d1', '#b8e6b8', '#b8d4e6'];
     
@@ -475,7 +472,7 @@ function createConfetti() {
     }
 }
 
-// Efeito de scroll progress personalizado
+
 function createScrollProgress() {
     const progressBar = document.createElement('div');
     progressBar.style.cssText = `
@@ -493,7 +490,7 @@ function createScrollProgress() {
     
     document.body.appendChild(progressBar);
     
-    // Indicador de scroll personalizado
+    
     const scrollIndicator = document.querySelector('.custom-scroll-indicator');
     
     window.addEventListener('scroll', () => {
@@ -501,16 +498,16 @@ function createScrollProgress() {
         const docHeight = document.body.offsetHeight - window.innerHeight;
         const scrollPercent = (scrollTop / docHeight) * 100;
         
-        // Atualizar barra de progresso superior
+        
         progressBar.style.width = scrollPercent + '%';
         
-        // Atualizar indicador de scroll lateral
+       
         if (scrollIndicator) {
             scrollIndicator.style.setProperty('--scroll-percent', scrollPercent + '%');
             scrollIndicator.style.setProperty('--scroll-height', scrollPercent + '%');
         }
         
-        // Adicionar efeito de brilho quando scrollar
+        
         if (scrollPercent > 0) {
             progressBar.style.boxShadow = '0 2px 15px rgba(255, 143, 163, 0.5)';
         } else {
@@ -519,11 +516,11 @@ function createScrollProgress() {
     });
 }
 
-// Inicializar efeitos quando a página carregar
+
 document.addEventListener('DOMContentLoaded', () => {
     createScrollProgress();
     
-    // Efeito de digitação no título
+    
     const heroTitle = document.querySelector('.hero-title .gradient-text');
     if (heroTitle) {
         const originalText = heroTitle.textContent;
@@ -533,10 +530,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Efeitos de interação com teclado
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-        // Fechar menu mobile se estiver aberto
+        
         if (navMenu.classList.contains('active')) {
             hamburger.classList.remove('active');
             navMenu.classList.remove('active');
@@ -544,7 +540,7 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// Efeitos de performance - throttling para scroll
+
 function throttle(func, limit) {
     let inThrottle;
     return function() {
@@ -558,12 +554,12 @@ function throttle(func, limit) {
     }
 }
 
-// Aplicar throttling aos eventos de scroll
+
 window.addEventListener('scroll', throttle(() => {
     revealOnScroll();
 }, 16));
 
-// Efeitos de acessibilidade
+
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Tab') {
         document.body.classList.add('keyboard-navigation');
@@ -574,11 +570,11 @@ document.addEventListener('mousedown', () => {
     document.body.classList.remove('keyboard-navigation');
 });
 
-// Efeitos de carregamento suave
+
 window.addEventListener('load', () => {
     document.body.classList.add('loaded');
     
-    // Animar elementos sequencialmente
+    
     const animatedElements = document.querySelectorAll('.hero-title, .hero-subtitle, .hero-description, .hero-buttons, .hero-image');
     animatedElements.forEach((element, index) => {
         setTimeout(() => {
